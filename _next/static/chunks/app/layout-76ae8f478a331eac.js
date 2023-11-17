@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[185],{1426:function(n,e,_){Promise.resolve().then(_.t.bind(_,5221,23))},5221:function(n){n.exports={style:{fontFamily:"'__Inter_439f6c', '__Inter_Fallback_439f6c'",fontStyle:"normal"},className:"__className_439f6c"}}},function(n){n.O(0,[893,97,744],function(){return n(n.s=1426)}),_N_E=n.O()}]);
