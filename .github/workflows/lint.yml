@@ -1,12 +1,14 @@
-name: Lint
+name: Lint and Test
 
 on:
   push:
   pull_request:
 
 jobs:
-  lint:
+  setup:
     runs-on: ubuntu-latest
+    outputs:
+      store-path: ${{ steps.store-path.outputs.path }}
 
     steps:
       - name: Checkout
@@ -24,9 +26,8 @@ jobs:
           run_install: false
 
       - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+        id: store-path
+        run: echo "path=$(pnpm store path --silent)" >> $GITHUB_ENV
 
       - uses: actions/cache@v3
         name: Set up pnpm cache
@@ -40,14 +41,26 @@ jobs:
         run: pnpm install --frozen-lockfile
         working-directory: frontend_challenge_2/challenges/k-taro56
 
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - name: Lint
         run: pnpm lint
         working-directory: frontend_challenge_2/challenges/k-taro56
 
+  check-formatting:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - name: Check Formatting
         run: pnpm prettier --check .
         working-directory: frontend_challenge_2/challenges/k-taro56
 
+  run-tests:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - name: Run tests with coverage
         run: pnpm test:ci
         working-directory: frontend_challenge_2/challenges/k-taro56
