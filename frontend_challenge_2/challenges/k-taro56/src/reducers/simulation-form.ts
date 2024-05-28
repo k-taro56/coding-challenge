@@ -160,6 +160,7 @@ const setSelectedContractCapacity = (
   const newState = setSelectedPlan(state, state.selectedPlan);
 
   newState.selectedContractCapacity = contractCapacity;
+  newState.contractCapacityCompleted = true;
 
   return newState;
 };
@@ -168,6 +169,7 @@ const setContractCapacity = (state: State, contractCapacity: number) => {
   const newState = setSelectedPlan(state, state.selectedPlan);
 
   newState.contractCapacity = contractCapacity;
+  newState.contractCapacityCompleted = true;
 
   return newState;
 };
@@ -176,6 +178,7 @@ const setElectricBill = (state: State, electricBill: number) => {
   const newState = setSelectedPlan(state, state.selectedPlan);
 
   newState.electricBill = electricBill;
+  newState.electricBillCompleted = true;
 
   return newState;
 };
@@ -184,6 +187,7 @@ const setMailAddress = (state: State, mailAddress: string) => {
   const newState = setSelectedPlan(state, state.selectedPlan);
 
   newState.mailAddress = mailAddress;
+  newState.mailAddressCompleted = true;
 
   return newState;
 };
