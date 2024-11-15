@@ -35,7 +35,7 @@ jobs:
         working-directory: frontend_challenge_2/challenges/k-taro56
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           use_oidc: true
           files: ./frontend_challenge_2/challenges/k-taro56/coverage/lcov.info
